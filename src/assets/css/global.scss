@@ -8,3 +8,20 @@ body,
   padding: 0;
   height: 100%;
 }
+
+// 面包屑导航
+.el-breadcrumb {
+  margin-bottom: 15px;
+  font-size: 12px !important;
+}
+
+// 数据表格
+.el-table {
+  margin-top: 15px;
+  font-size: 12px !important;
+}
+
+// 分页导航
+.el-pagination {
+  margin-top: 15px;
+}

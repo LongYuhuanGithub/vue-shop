@@ -1,0 +1,42 @@
+### 用户数据列表
+GET {{baseUrl}}/users?query=list&pagenum=1&pagesize=2
+Accept: application/json
+Authorization: {{token}}
+
+### 添加用户
+POST {{baseUrl}}/users
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "username": "zhangsan",
+  "password": "123",
+  "email": "123@qq.com",
+  "mobile": "13200000000"
+}
+
+### 修改用户状态
+PUT {{baseUrl}}/users/500/state/false
+Accept: application/json
+Authorization: {{token}}
+
+### 根据 ID 查询用户信息
+GET {{baseUrl}}/users/500
+Accept: application/json
+Authorization: {{token}}
+
+### 编辑用户提交
+PUT {{baseUrl}}/users/500
+Accept: application/json
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "email": "2630819701@qq.com",
+  "mobile": "17374000851"
+}
+
+### 删除单个用户
+DELETE {{baseUrl}}/users/511
+Accept: application/json
+Authorization: {{token}}

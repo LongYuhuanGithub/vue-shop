@@ -1,0 +1,4 @@
+### 左侧菜单权限
+GET {{baseUrl}}/menus
+Accept: application/json
+Authorization: {{token}}
