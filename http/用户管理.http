@@ -40,3 +40,13 @@ Authorization: {{token}}
 DELETE {{baseUrl}}/users/511
 Accept: application/json
 Authorization: {{token}}
+
+### 分配用户角色
+PUT {{baseUrl}}/users/502/role
+Accept: application/json
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "rid": 42
+}

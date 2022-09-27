@@ -1,0 +1,48 @@
+### 角色列表
+GET {{baseUrl}}/roles
+Accept: application/json
+Authorization: {{token}}
+
+### 添加角色
+POST {{baseUrl}}/roles
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "roleName": "灭火皇子",
+  "roleDesc": "专门封印老头的流刃若火"
+}
+
+### 根据 ID 查询角色
+GET {{baseUrl}}/roles/30
+Accept: application/json
+Authorization: {{token}}
+
+### 编辑提交角色
+PUT {{baseUrl}}/roles/42
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "roleName": "灭火皇子",
+  "roleDesc": "专门封印总队长的流刃若火"
+}
+
+### 删除角色
+DELETE {{baseUrl}}/roles/43
+Accept: application/json
+Authorization: {{token}}
+
+### 角色授权
+POST {{baseUrl}}/roles/30/rights
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "rids": "105,116,101,104"
+}
+
+### 删除角色指定权限
+DELETE {{baseUrl}}/roles/30/rights/145
+Accept: application/json
+Authorization: {{token}}

@@ -19,7 +19,7 @@
           </el-input>
         </el-col>
         <el-col :span="4">
-          <el-button type="primary" @click="addDialogVisible = true">添加</el-button>
+          <el-button type="primary" @click="addDialogVisible = true">添加用户</el-button>
         </el-col>
       </el-row>
 
@@ -35,12 +35,12 @@
             <el-switch v-model="row.mg_state" @change="userStateChange(row)"/>
           </template>
         </el-table-column>
-        <el-table-column label="操作">
+        <el-table-column label="操作" width="187px">
           <template v-slot="{ row }">
             <el-button type="primary" :icon="Edit" @click="showUpdateDialog(row.id)"/>
             <el-button type="danger" :icon="Delete" @click="deleteUser(row.id)"/>
             <el-tooltip content="分配角色" placement="top" :enterable="false">
-              <el-button type="warning" :icon="Setting"/>
+              <el-button type="warning" :icon="Setting" @click="showSetRoleDialog(row)"/>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -96,6 +96,24 @@
         <el-button type="primary" @click="updateUser">保存</el-button>
       </template>
     </el-dialog>
+
+    <!-- 分配角色对话框 -->
+    <el-dialog title="修改用户" width="30%" v-model="setRoleDialogVisible" @close="selectedRoleId = ''">
+      <div>
+        <p>当前用户：{{ user.username }}</p>
+        <p>当前角色：{{ user.role_name }}</p>
+        <p>
+          分配新角色：
+          <el-select v-model="selectedRoleId" size="large" placeholder="请选择">
+            <el-option v-for="item in roleList" :key="item.id" :label="item.roleName" :value="item.id"/>
+          </el-select>
+        </p>
+      </div>
+      <template #footer>
+        <el-button @click="setRoleDialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="saveRoleInfo">保存</el-button>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -108,9 +126,7 @@ const message = inject('message')
 const http = inject('http')
 
 // 生命周期函数
-onBeforeMount(() => {
-  getUserList()
-})
+onBeforeMount(() => getUserList())
 
 // ref 操作 DOM 元素
 const addFormRef = ref() // 添加表单的 ref
@@ -119,6 +135,7 @@ const updateFormRef = ref() // 修改表单的 ref
 // 响应式状态
 const search = ref('') // 搜索框的值
 const userList = ref([]) // 用户列表
+const roleList = ref([]) // 角色列表
 const pagination = reactive({ // 分页数据对象
   current: 1, // 当前页
   size: 10, // 一页显示几条
@@ -126,12 +143,14 @@ const pagination = reactive({ // 分页数据对象
 })
 const addDialogVisible = ref(false) // 控制添加用户对话框的显示与隐藏
 const updateDialogVisible = ref(false) // 控制添加用户对话框的显示与隐藏
+const setRoleDialogVisible = ref(false) // 控制分配权限对话框的显示与隐藏
 const user = reactive({ // 用户数据模型
   id: 0,
   username: '',
   password: '',
   email: '',
-  mobile: ''
+  mobile: '',
+  role_name: ''
 })
 const validateEmail = (rule, value, callback) => { // 邮箱的校验规则
   if (!/^\w+@[a-z0-9]+(\.[a-z]+)+$/.test(value)) return callback(new Error('请输入合法的邮箱'))
@@ -158,6 +177,7 @@ const rules = reactive({ // 表单校验对象
     { validator: validateMobile, trigger: 'blur' }
   ]
 })
+const selectedRoleId = ref('') // 当前选择的角色 id
 
 // 处理函数
 const getUserList = async () => { // 获取用户列表
@@ -192,7 +212,7 @@ const addUser = () => { // 添加用户
     if (!valid) return
     const { data } = await http.post('/users', user)
     if (data.meta.status !== 201) return message.error(data.meta.msg)
-    message.success(data.meta.msg)
+    message.success('添加成功')
     addDialogVisible.value = false
     await getUserList()
   })
@@ -214,7 +234,7 @@ const updateUser = () => { // 修改用户
       mobile: user.mobile
     })
     if (data.meta.status !== 200) return message.error(data.meta.msg)
-    message.success(data.meta.msg)
+    message.success('修改成功')
     updateDialogVisible.value = false
     await getUserList()
   })
@@ -223,8 +243,25 @@ const deleteUser = id => { // 删除用户
   ElMessageBox.confirm('此操作将永久删除该用户，是否继续？', '提示', { type: 'warning' }).then(async () => {
     const { data } = await http.delete('/users/' + id)
     if (data.meta.status !== 200) return message.error(data.meta.msg)
-    message.success(data.meta.msg)
+    message.success('删除成功')
     await getUserList()
   }).catch(error => error)
+}
+const showSetRoleDialog = async row => { // 显示分配角色对话框
+  user.id = row.id
+  user.username = row.username
+  user.role_name = row.role_name
+  const { data } = await http.get('/roles')
+  if (data.meta.status !== 200) return message.error(data.meta.msg)
+  roleList.value = data.data
+  setRoleDialogVisible.value = true
+}
+const saveRoleInfo = async () => { // 保存角色信息
+  if (!selectedRoleId.value) return message.error('请选择要分配的角色')
+  const { data } = await http.put(`/users/${user.id}/role`, { rid: selectedRoleId.value })
+  if (data.meta.status !== 200) return message.error(data.meta.msg)
+  message.success('分配角色成功')
+  await getUserList()
+  setRoleDialogVisible.value = false
 }
 </script>

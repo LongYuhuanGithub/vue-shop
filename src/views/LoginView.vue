@@ -64,7 +64,7 @@ const submitForm = () => { // 提交表单
     if (!valid) return
     const { data } = await http.post('/login', user)
     if (data.meta.status !== 200) return message.error(data.meta.msg)
-    message.success(data.meta.msg)
+    message.success('登陆成功')
     // 将登录成功之后的 token，保存到客户端的 sessionStorage 中。token 只应在当前网站打开期间生效，所以将 token 保存在 sessionStorage 中
     // 项目中除了登录之外的其他 API 接口，必须在登录之后才能访问
     sessionStorage.setItem('vue_shop_token', data.data.token)

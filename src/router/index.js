@@ -4,6 +4,7 @@ import HomeView from '@/views/HomeView'
 import WelcomeView from '@/views/WelcomeView'
 import UsersView from '@/views/UsersView'
 import RolesView from '@/views/RolesView'
+import RightsView from '@/views/RightsView'
 
 const routes = [
   {
@@ -30,6 +31,10 @@ const routes = [
       {
         path: 'roles',
         component: RolesView
+      },
+      {
+        path: 'rights',
+        component: RightsView
       }
     ]
   }
