@@ -30,7 +30,7 @@
         <el-table-column prop="email" label="邮箱"/>
         <el-table-column prop="mobile" label="电话"/>
         <el-table-column prop="role_name" label="角色"/>
-        <el-table-column prop="mg_state" label="状态">
+        <el-table-column label="状态">
           <template v-slot="{ row }">
             <el-switch v-model="row.mg_state" @change="userStateChange(row)"/>
           </template>
@@ -52,8 +52,8 @@
                      v-model:page-size="pagination.size"
                      :total="pagination.total"
                      :page-sizes="[10, 20, 30, 40, 50]"
-                     @size-change="handleSizeChange"
-                     @current-change="handleCurrentChange"/>
+                     @current-change="handleCurrentChange"
+                     @size-change="handleSizeChange"/>
     </el-card>
 
     <!-- 添加用户对话框 -->

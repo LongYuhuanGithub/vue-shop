@@ -5,6 +5,7 @@ import WelcomeView from '@/views/WelcomeView'
 import UsersView from '@/views/UsersView'
 import RolesView from '@/views/RolesView'
 import RightsView from '@/views/RightsView'
+import CategoriesView from '@/views/CategoriesView'
 
 const routes = [
   {
@@ -35,6 +36,10 @@ const routes = [
       {
         path: 'rights',
         component: RightsView
+      },
+      {
+        path: 'categories',
+        component: CategoriesView
       }
     ]
   }

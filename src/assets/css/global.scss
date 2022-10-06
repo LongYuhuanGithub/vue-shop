@@ -25,3 +25,25 @@ body,
 .el-pagination {
   margin-top: 15px;
 }
+
+// 滚动条样式的类名
+.scroll-bar {
+  overflow: auto !important;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 1px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(70, 73, 77, 0.8);
+
+    &:hover {
+      background-color: #56585c;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #2b2e34;
+  }
+}

@@ -12,8 +12,10 @@
       <!-- 内容区域 -->
       <el-container>
         <!-- 左侧导航 -->
-        <el-aside :width="isCollapse ? '64px' : '200px'">
-          <div class="toggle-button" @click="isCollapse = !isCollapse">|||</div>
+        <el-aside class="scroll-bar" :width="isCollapse ? '64px' : '200px'">
+          <div class="toggle-button" @click="isCollapse = !isCollapse">
+            <i :class="['iconfont', isCollapse ? 'icon-indent' : 'icon-outdent']"></i>
+          </div>
           <el-menu class="el-menu-vertical-demo"
                    background-color="#333744"
                    text-color="#fff"
@@ -38,9 +40,9 @@
           </el-menu>
         </el-aside>
         <!-- 主体内容 -->
-        <el-main>
+        <el-main class="scroll-bar">
           <router-view v-slot="{ Component }">
-            <transition name="fade-transform">
+            <transition>
               <keep-alive>
                 <component :is="Component"/>
               </keep-alive>
@@ -92,8 +94,9 @@ const logout = () => { // 退出登录
     }
   ).then(() => {
     sessionStorage.removeItem('vue_shop_token')
+    window.sessionStorage.removeItem('vue_shop_active_path')
     router.push('/login')
-  })
+  }).catch(error => error)
 }
 const getMenuList = async () => { // 获取菜单列表
   const { data } = await http.get('/menus')
@@ -123,6 +126,7 @@ const saveNavState = currentActivePath => { // 保存菜单高亮状态
       background-color: #373d41;
       color: #fff;
       font-size: 20px;
+      z-index: 1;
 
       div {
         display: flex;
@@ -136,19 +140,27 @@ const saveNavState = currentActivePath => { // 保存菜单高亮状态
 
     // 内容区域
     .el-container {
+      margin-top: -60px;
+      padding-top: 60px;
+
       .el-header {
         background-color: #373d41;
       }
 
       .el-aside {
         background-color: #333744;
+        transition: all .3s;
 
         .toggle-button {
           height: 30px;
-          background-color: #475161;
           color: #fff;
           text-align: center;
           line-height: 30px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #475161;
+          }
         }
 
         // 去除 el-menu 组件的右边框
@@ -158,16 +170,17 @@ const saveNavState = currentActivePath => { // 保存菜单高亮状态
       }
 
       .el-main {
+        position: relative;
         background-color: #eaedf1;
 
         // Transition 组件的过渡样式
-        .fade-transform-enter-active,
-        .fade-transform-leave-active {
-          transition: all .7s ease-in-out;
+        .v-enter-active,
+        .v-leave-active {
+          transition: all .5s ease-in-out;
         }
 
-        .fade-transform-enter-from,
-        .fade-transform-leave-to {
+        .v-enter-from,
+        .v-leave-to {
           position: absolute;
           width: 100%;
           transform: translateX(100%);

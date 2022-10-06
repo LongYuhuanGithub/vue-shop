@@ -9,7 +9,7 @@
 
     <!-- 卡片视图区 -->
     <el-card>
-      <!-- 添加区域 -->
+      <!-- 添加按钮 -->
       <el-button type="primary" @click="addDialogVisible = true">添加角色</el-button>
 
       <!-- 角色列表 -->
