@@ -218,26 +218,23 @@ const allotRight = async () => { // 为角色分配权限
 
 <style lang="scss" scoped>
 .roles {
-  // 卡片视图区
-  .el-card {
-    // 角色列表
-    .el-table {
-      .el-row {
-        display: flex;
-        align-items: center;
+  // 角色列表
+  .el-table {
+    .el-row {
+      display: flex;
+      align-items: center;
 
-        .el-tag {
-          margin: 7px;
-        }
+      .el-tag {
+        margin: 7px;
       }
+    }
 
-      .border-top {
-        border-top: 1px solid #eee;
-      }
+    .border-top {
+      border-top: 1px solid #eee;
+    }
 
-      .border-bottom {
-        border-bottom: 1px solid #eee;
-      }
+    .border-bottom {
+      border-bottom: 1px solid #eee;
     }
   }
 }

@@ -32,7 +32,10 @@
                 <span>{{ item.authName }}</span>
               </template>
               <!-- 二级菜单 -->
-              <el-menu-item v-for="subItem in item.children" :key="subItem.id" :index="'/home/' + subItem.path" @click="saveNavState('/home/' + subItem.path)">
+              <el-menu-item v-for="subItem in item.children"
+                            :key="subItem.id"
+                            :index="'/home/' + subItem.path"
+                            @click="activePath = '/home/' + subItem.path">
                 <el-icon><Menu/></el-icon>
                 <span>{{ subItem.authName }}</span>
               </el-menu-item>
@@ -55,20 +58,18 @@
 </template>
 
 <script setup>
-import { onBeforeMount, inject, ref, reactive } from 'vue'
-import { useRouter } from 'vue-router'
+import { onBeforeMount, inject, ref, reactive, watch } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { ElMessageBox } from 'element-plus'
 import { Menu } from '@element-plus/icons-vue'
 
 const message = inject('message')
 const http = inject('http')
 const router = useRouter()
+const route = useRoute()
 
 // 生命周期函数
-onBeforeMount(() => {
-  getMenuList()
-  activePath.value = window.sessionStorage.getItem('vue_shop_active_path')
-})
+onBeforeMount(() => getMenuList())
 
 // 响应式状态
 const menuList = ref([]) // 菜单列表
@@ -94,7 +95,6 @@ const logout = () => { // 退出登录
     }
   ).then(() => {
     sessionStorage.removeItem('vue_shop_token')
-    window.sessionStorage.removeItem('vue_shop_active_path')
     router.push('/login')
   }).catch(error => error)
 }
@@ -103,10 +103,11 @@ const getMenuList = async () => { // 获取菜单列表
   if (data.meta.status !== 200) return message.error(data.meta.msg)
   menuList.value = data.data
 }
-const saveNavState = currentActivePath => { // 保存菜单高亮状态
-  window.sessionStorage.setItem('vue_shop_active_path', currentActivePath)
-  activePath.value = currentActivePath
-}
+
+// 监听器
+watch(route, newVal => { // 监听地址栏发生变化，根据 url 地址设置对应的菜单高亮
+  activePath.value = newVal.path
+}, { immediate: true })
 </script>
 
 <style lang="scss" scoped>
@@ -133,7 +134,8 @@ const saveNavState = currentActivePath => { // 保存菜单高亮状态
         align-items: center;
 
         img {
-          height: 56px;
+          margin: 0 10px;
+          height: 40px;
         }
       }
     }

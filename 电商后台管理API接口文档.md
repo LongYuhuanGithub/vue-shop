@@ -939,7 +939,7 @@ type=tree
 
 - 响应数据
 
-```
+```json
 {
     "data": {
         "attr_id": 44,
@@ -969,7 +969,7 @@ type=tree
 
 - 响应数据
 
-```
+```json
 {
     "data": null,
     "meta": {
@@ -994,7 +994,7 @@ type=tree
 
 - 响应数据
 
-```
+```json
 {
     "data": {
         "attr_id": 1,
@@ -1027,7 +1027,7 @@ type=tree
 
 - 响应数据
 
-```
+```json
 {
     "data": {
         "attr_id": 9,
@@ -1077,7 +1077,7 @@ type=tree
 
 - 响应数据
 
-```
+```json
 {
     "data": {
         "total": 50,

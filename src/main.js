@@ -1,8 +1,9 @@
+import '@/assets/fonts/iconfont/iconfont.css'
+import '@/assets/fonts/iconfont.css'
 import 'element-plus/theme-chalk/el-loading.css' // 导入 ElLoading 组件的样式
 import 'element-plus/theme-chalk/el-message.css' // 导入 ElMessage 组件的样式
 import 'element-plus/theme-chalk/el-message-box.css' // 导入 ElMessageBox 组件的样式
-import '@/assets/fonts/iconfont/iconfont.css'
-import '@/assets/fonts/iconfont.css'
+import 'animate.css' // 导入动画库样式
 import '@/assets/css/global.scss'
 import { createApp } from 'vue'
 import { ElMessage, ElLoading } from 'element-plus'

@@ -1,0 +1,15 @@
+### 商品分类数据列表
+GET {{baseUrl}}/categories?type=3&pagenum=1&pagesize=2
+Accept: application/json
+Authorization: {{token}}
+
+### 添加分类
+POST {{baseUrl}}/categories
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "cat_name": "test2",
+  "cat_pid": 1487,
+  "cat_level": 1
+}

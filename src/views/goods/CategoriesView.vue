@@ -114,7 +114,6 @@ const selectedKeys = ref([]) // 级联选择器选中的ID数组
 const getCateList = async () => { // 获取分类列表
   const { data } = await http.get('/categories', {
     params: {
-      type: 3,
       pagenum: pagination.current,
       pagesize: pagination.size
     }

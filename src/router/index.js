@@ -2,10 +2,11 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import LoginView from '@/views/LoginView'
 import HomeView from '@/views/HomeView'
 import WelcomeView from '@/views/WelcomeView'
-import UsersView from '@/views/UsersView'
-import RolesView from '@/views/RolesView'
-import RightsView from '@/views/RightsView'
-import CategoriesView from '@/views/CategoriesView'
+import UsersView from '@/views/user/UsersView'
+import RolesView from '@/views/permission/RolesView'
+import RightsView from '@/views/permission/RightsView'
+import CategoriesView from '@/views/goods/CategoriesView'
+import ParamsView from '@/views/goods/ParamsView'
 
 const routes = [
   {
@@ -40,8 +41,20 @@ const routes = [
       {
         path: 'categories',
         component: CategoriesView
+      },
+      {
+        path: 'params',
+        component: ParamsView
       }
     ]
+  },
+  {
+    path: '/:pathMatch(.*)',
+    redirect: '/404'
+  },
+  {
+    path: '/404',
+    component: () => import('@/views/404View.vue')
   }
 ]
 
