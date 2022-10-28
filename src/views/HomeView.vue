@@ -46,9 +46,7 @@
         <el-main class="scroll-bar">
           <router-view v-slot="{ Component }">
             <transition>
-              <keep-alive>
-                <component :is="Component"/>
-              </keep-alive>
+              <component :is="Component"/>
             </transition>
           </router-view>
         </el-main>

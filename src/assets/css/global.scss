@@ -13,23 +13,6 @@ body,
   height: 100%;
 }
 
-// 面包屑导航
-.el-breadcrumb {
-  margin-bottom: 15px;
-  font-size: 12px !important;
-}
-
-// 数据表格
-.el-table {
-  margin-top: 15px;
-  font-size: 12px !important;
-}
-
-// 分页导航
-.el-pagination {
-  margin-top: 15px;
-}
-
 // 滚动条样式的类名
 .scroll-bar {
   overflow: auto !important;
@@ -49,5 +32,31 @@ body,
 
   &::-webkit-scrollbar-track {
     background-color: #2b2e34;
+  }
+}
+
+// 面包屑导航
+.el-breadcrumb {
+  margin-bottom: 15px;
+  font-size: 12px !important;
+}
+
+// 数据表格
+.el-table {
+  margin-top: 15px;
+  font-size: 12px !important;
+}
+
+// 分页导航
+.el-pagination {
+  margin-top: 15px;
+}
+
+// 步骤条
+.el-steps {
+  margin: 15px 0;
+
+  .el-step__title {
+    font-size: 13px;
   }
 }

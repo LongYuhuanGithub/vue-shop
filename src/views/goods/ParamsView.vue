@@ -16,10 +16,7 @@
       <el-row class="cat_opt">
         <el-col>
           <span>选择商品分类：</span>
-          <el-cascader v-model="selectedKeys"
-                       :options="cateList"
-                       :props="cascaderProps"
-                       @change="handleCascaderChange"/>
+          <el-cascader v-model="selectedKeys" :options="cateList" :props="cascaderProps" @change="handleCascaderChange"/>
         </el-col>
       </el-row>
 
@@ -50,7 +47,7 @@
             </el-table-column>
             <el-table-column type="index" label="#" width="50"/>
             <el-table-column prop="attr_name" label="参数名称"/>
-            <el-table-column label="操作" width="197px">
+            <el-table-column label="操作" width="200px">
               <template v-slot="{ row }">
                 <el-button type="primary" :icon="Edit" @click="showUpdateDialog(row.attr_id)">编辑</el-button>
                 <el-button type="danger" :icon="Delete" @click="deleteParam(row.attr_id)">删除</el-button>
@@ -83,7 +80,7 @@
             </el-table-column>
             <el-table-column type="index" label="#" width="50"/>
             <el-table-column prop="attr_name" label="属性名称"/>
-            <el-table-column label="操作" width="197px">
+            <el-table-column label="操作" width="200px">
               <template v-slot="{ row }">
                 <el-button type="primary" :icon="Edit" @click="showUpdateDialog(row.attr_id)">编辑</el-button>
                 <el-button type="danger" :icon="Delete" @click="deleteParam(row.attr_id)">删除</el-button>

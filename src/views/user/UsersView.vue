@@ -12,7 +12,7 @@
       <!-- 搜索和添加区域 -->
       <el-row :gutter="15">
         <el-col :span="7">
-          <el-input placeholder="请输入内容" clearable v-model="search" @keyup.enter="getUserList">
+          <el-input placeholder="请输入内容" clearable v-model="search" @keyup.enter="getUserList" @clear="getUserList">
             <template #append>
               <el-button :icon="Search" @click="getUserList"/>
             </template>
@@ -35,7 +35,7 @@
             <el-switch v-model="row.mg_state" @change="userStateChange(row)"/>
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="187px">
+        <el-table-column label="操作" width="190px">
           <template v-slot="{ row }">
             <el-button type="primary" :icon="Edit" @click="showUpdateDialog(row.id)"/>
             <el-button type="danger" :icon="Delete" @click="deleteUser(row.id)"/>

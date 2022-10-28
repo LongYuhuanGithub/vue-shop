@@ -44,7 +44,7 @@
         <el-table-column type="index" label="#" width="50"/>
         <el-table-column prop="roleName" label="角色名称"/>
         <el-table-column prop="roleDesc" label="角色描述"/>
-        <el-table-column label="操作" width="317px">
+        <el-table-column label="操作" width="320px">
           <template v-slot="{ row }">
             <el-button type="primary" :icon="Edit" @click="showUpdateDialog(row.id)">编辑</el-button>
             <el-button type="danger" :icon="Delete" @click="deleteRole(row.id)">删除</el-button>
@@ -87,9 +87,17 @@
     </el-dialog>
 
     <!-- 分配权限对话框 -->
-    <el-dialog title="分配权限" width="30%" v-model="setRightsDialogVisible">
+    <el-dialog title="分配权限" width="30%" v-model="setRightsDialogVisible" @close="defKeys = []">
       <!-- node-key="id" 表示选中之后选择的是节点对应的 id 属性 -->
-      <el-tree ref="treeRef" default-expand-all show-checkbox node-key="id" :data="rightList" :props="treeProps" :default-checked-keys="defKeys" @close="defKeys = []"/>
+      <el-tree
+        ref="treeRef"
+        default-expand-all
+        show-checkbox
+        node-key="id"
+        :data="rightList"
+        :props="treeProps"
+        :default-checked-keys="defKeys"
+      />
       <template #footer>
         <el-button @click="setRightsDialogVisible = false">取消</el-button>
         <el-button type="primary" @click="allotRight">保存</el-button>

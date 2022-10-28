@@ -29,7 +29,7 @@
             <el-tag type="warning" v-else>三级</el-tag>
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="197px">
+        <el-table-column label="操作" width="200px">
           <template v-slot="{ row }">
             <el-button type="primary" :icon="Edit" @click="showUpdateDialog(row.id)">编辑</el-button>
             <el-button type="danger" :icon="Delete" @click="deleteRole(row.id)">删除</el-button>

@@ -1,0 +1,9 @@
+### 商品列表数据
+GET {{baseUrl}}/goods?query=&pagenum=1&pagesize=2
+Accept: application/json
+Authorization: {{token}}
+
+### 删除商品
+DELETE {{baseUrl}}/goods/926
+Accept: application/json
+Authorization: {{token}}

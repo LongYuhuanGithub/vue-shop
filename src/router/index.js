@@ -7,6 +7,8 @@ import RolesView from '@/views/permission/RolesView'
 import RightsView from '@/views/permission/RightsView'
 import CategoriesView from '@/views/goods/CategoriesView'
 import ParamsView from '@/views/goods/ParamsView'
+import GoodsView from '@/views/goods/GoodsView'
+import GoodsAddView from '@/views/goods/GoodsAddView'
 
 const routes = [
   {
@@ -45,6 +47,14 @@ const routes = [
       {
         path: 'params',
         component: ParamsView
+      },
+      {
+        path: 'goods',
+        component: GoodsView
+      },
+      {
+        path: 'goodsadd',
+        component: GoodsAddView
       }
     ]
   },

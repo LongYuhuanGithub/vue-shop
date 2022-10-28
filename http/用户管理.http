@@ -1,5 +1,5 @@
 ### 用户数据列表
-GET {{baseUrl}}/users?query=list&pagenum=1&pagesize=2
+GET {{baseUrl}}/users?query=&pagenum=1&pagesize=2
 Accept: application/json
 Authorization: {{token}}
 

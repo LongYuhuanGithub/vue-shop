@@ -814,7 +814,7 @@ type=tree
 
 - 响应数据
 
-```
+```json
 {
     "data": {
         "cat_id": 3,
@@ -842,7 +842,7 @@ type=tree
 
 - 响应数据
 
-```
+```json
 {
     "data": {
         "cat_id": 22,
@@ -869,7 +869,7 @@ type=tree
 
 - 响应数据
 
-```
+```json
 {
     "data": null,
     "meta": {
@@ -905,7 +905,7 @@ type=tree
 
 - 响应数据
 
-```
+```json
 {
     "data": [
         {
@@ -1256,7 +1256,7 @@ type=tree
 
 - 响应数据
 
-```
+```json
 {
     "data": {
         "goods_id": 145,
@@ -1330,7 +1330,7 @@ type=tree
 
 - 请求数据
 
-```
+```json
 {
   "goods_name":"test_goods_name2",
   "goods_price":20,
@@ -1374,7 +1374,7 @@ type=tree
 
 - 响应数据
 
-```
+```json
 {
     "data": {
         "goods_id": 145,
@@ -1441,7 +1441,7 @@ type=tree
 
 - 响应数据
 
-```
+```json
 {
     "data": null,
     "meta": {
@@ -1464,7 +1464,7 @@ type=tree
 
 - 请求数据
 
-```
+```json
 ;[
   { pic: 'tmp_uploads/db28f6316835836e97653b5c75e418be.png' },
   {
@@ -1479,7 +1479,7 @@ type=tree
 
 - 响应数据
 
-```
+```json
 {
     "data": {
         "goods_id": 96,
@@ -1548,7 +1548,7 @@ type=tree
 
 - 请求数据
 
-```
+```json
 ;[
   {
     attr_id: 15,
@@ -1563,7 +1563,7 @@ type=tree
 
 - 响应数据
 
-```
+```json
 {
     "data": {
         "goods_id": 96,
@@ -1648,7 +1648,7 @@ brew install GraphicsMagick
 
 - 响应数据
 
-```
+```json
 {
     "data": {
         "tmp_path": "tmp_uploads/ccfc5179a914e94506bcbb7377e8985f.png",
@@ -1684,7 +1684,7 @@ brew install GraphicsMagick
 
 - 响应数据
 
-```
+```json
 {
     "data": {
         "total": 1,
@@ -1734,7 +1734,7 @@ brew install GraphicsMagick
   - 所有请求数据都是增量更新，如果参数不填写，就不会更新该字段
 - 响应数据
 
-```
+```json
 {
     "data": {
         "order_id": 67,
@@ -1789,7 +1789,7 @@ brew install GraphicsMagick
 
 - 响应数据
 
-```
+```json
 {
     "data": {
         "order_id": 67,

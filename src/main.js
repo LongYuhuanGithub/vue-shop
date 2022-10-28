@@ -8,6 +8,7 @@ import '@/assets/css/global.scss'
 import { createApp } from 'vue'
 import { ElMessage, ElLoading } from 'element-plus'
 import axios from 'axios'
+import moment from 'moment'
 import App from '@/App.vue'
 import router from '@/router'
 
@@ -22,11 +23,13 @@ axios.interceptors.response.use(response => { // 响应拦截
   loadingInstance.close()
   return response
 })
+moment.locale('zh-cn')
 
 const vue = createApp(App)
 
 // 全局挂载
 vue.provide('message', ElMessage)
 vue.provide('http', axios)
+vue.provide('moment', moment)
 
 vue.use(router).mount('#app')
