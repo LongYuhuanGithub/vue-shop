@@ -29,7 +29,11 @@
         <el-table-column prop="goods_name" label="商品名称"/>
         <el-table-column prop="goods_price" label="商品价格（元）" width="110px"/>
         <el-table-column prop="goods_weight" label="商品重量" width="100px"/>
-        <el-table-column prop="add_time" label="创建时间" width="160px"/>
+        <el-table-column label="创建时间" width="160px">
+          <template v-slot="{ row }">
+            {{ moment(row.add_time).format('YYYY-MM-DD HH:mm:ss') }}
+          </template>
+        </el-table-column>
         <el-table-column label="操作" width="130px">
           <template v-slot="{ row }">
             <el-button type="primary" :icon="Edit" @click="console.log(row.goods_id)"/>
@@ -84,9 +88,6 @@ const getGoodsList = async () => { // 获取商品列表
   })
   if (data.meta.status !== 200) return message.error(data.meta.msg)
   pagination.total = data.data.total
-  data.data.goods.forEach(item => {
-    item.add_time = moment(item.add_time).format('YYYY-MM-DD HH:mm:ss')
-  })
   goodsList.value = data.data.goods
 }
 const handleCurrentChange = val => { // 处理当前页改变

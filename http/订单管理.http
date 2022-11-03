@@ -1,0 +1,9 @@
+### 订单数据列表
+GET {{baseUrl}}/orders?query=&pagenum=1&pagesize=2
+Accept: application/json
+Authorization: {{token}}
+
+### 查看物流信息
+GET {{baseUrl}}/kuaidi/804909574412544580
+Accept: application/json
+Authorization: {{token}}
