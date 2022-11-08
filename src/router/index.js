@@ -10,6 +10,7 @@ import ParamsView from '@/views/goods/ParamsView'
 import GoodsView from '@/views/goods/GoodsView'
 import GoodsAddView from '@/views/goods/GoodsAddView'
 import OrdersView from '@/views/order/OrdersView'
+import ReportsView from '@/views/report/ReportsView'
 
 const routes = [
   {
@@ -60,6 +61,10 @@ const routes = [
       {
         path: 'orders',
         component: OrdersView
+      },
+      {
+        path: 'reports',
+        component: ReportsView
       }
     ]
   },
